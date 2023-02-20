@@ -1,20 +1,15 @@
 .navbar{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background-color: #181E39;
-    padding: .5rem 2.5rem;
-}
-.logo svg{
-    width: 2.5rem;
-    height: 2.5rem;
-    color: #F91A4E;
+    padding: .8rem 2.5rem;
 }
 .search form{
     display: flex;
 }
 .search input{
-    width: 20rem;
+    width: 80vw;
     height: 2.5rem;
     border: none;
     border-radius: .6rem 0  0 .6rem;
@@ -28,4 +23,14 @@
     border-radius: 0 .6rem .6rem 0;
     background-color: #F91A4E;
     cursor: pointer;
+    transition: .3s;
+}
+.search button:hover{
+    background-color: #c7143e;
+    color: #181E39;
+}
+@media screen and (min-width: 700px){
+    .search input{
+        width: 35rem;
+    }
 }

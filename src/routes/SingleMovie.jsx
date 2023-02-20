@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {FaStar} from 'react-icons/fa'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import './SingleMovie.css'
 
 const SingleMovie = () => {
   const {id} = useParams()
@@ -20,17 +21,23 @@ const SingleMovie = () => {
   const {Poster, Title, Plot, Year, Runtime, imdbRating} = movie
 
   return (
-    <section className='container'>
-      <img src={Poster} alt={Title} /> 
-      <div>
+    <section >
+      <div className='container-movie'>
+        <img src={Poster} alt={Title} /> 
         <div>
-          <h2>{Title}</h2>   
-          <p>{Year}</p>
-        </div>
-        <p>{Plot}</p>
-        <p>{Runtime}</p>       
-        <p><span><FaStar/> </span>{imdbRating}</p>        
-      </div>     
+          <div className='title-year'>
+            <h2>{Title}</h2>   
+            <p>{Year}</p>
+          </div>
+          <p>{Plot}</p>
+          <p>{Runtime}</p>       
+          <div className='rating'>
+            <FaStar/>
+            <p>{imdbRating}</p>
+          </div>   
+          <Link to={`/`}><button>back to home</button></Link>     
+        </div> 
+      </div>          
     </section>
   )
 }

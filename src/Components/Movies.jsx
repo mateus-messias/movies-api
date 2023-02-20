@@ -10,9 +10,9 @@ const Movies = ({moviesList}) => {
         return(
           <div key={imdbID} className='movie-card'>
             <img src={Poster}/>
-            <h2>{Title}</h2>
+            <h2>{Title}</h2>            
             <p>Year: {Year}</p>
-            <Link to={`/movie/${imdbID}`}>details</Link>
+            <Link to={`/movie/${imdbID}`}><button>details</button></Link>                        
           </div>
         )
       })}

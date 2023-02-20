@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Navbar from '../Components/Navbar'
 import Movies from '../Components/Movies'
@@ -6,18 +6,30 @@ import Movies from '../Components/Movies'
 
 const Home = () => {
   const [movies, setMovies] = useState([])
+  const [error, setError]  = useState(false)
 
   const fetchMovies = async (query) => {
     const response = await fetch(`http://www.omdbapi.com/?apikey=33f3ff66&s=${!query ? 'movie' : query}`)
-    const data = await response.json()
-    setMovies(data.Search) 
+    const data = await response.json()     
+    setMovies(data.Search)
+
+    if(data.Response === 'False'){      
+      setError(true)
+    } else {
+      setError(false)
+    }    
   }  
 
   return (
     <div>
       <Navbar search={fetchMovies}/>
       <div className='container'>
-        <Movies moviesList={movies}/>
+        {
+          error ? 
+            <h2 className='error'>TITLE NO FOUND</h2>
+          : 
+            <Movies moviesList={movies}/>
+        }        
       </div> 
     </div>
   )

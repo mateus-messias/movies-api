@@ -1,18 +1,17 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import {FaSearch} from 'react-icons/fa'
-import {BiCameraMovie} from 'react-icons/bi'
 
 import './Navbar.css'
+import { Link } from 'react-router-dom'
 
 const Navbar = ({search}) => {
   const [movieSearch, setMovieSearch] = useState('')
-  
+    
   const handleSubmit = (e) => {
     e.preventDefault()
     search(movieSearch)
-    // console.log(movieSearch);
-
+    setMovieSearch('')
   }
 
   useEffect(() => {
@@ -20,8 +19,7 @@ const Navbar = ({search}) => {
   }, [])
 
   return (
-    <nav className='navbar'>
-        <div className='logo'><BiCameraMovie/></div>
+    <nav className='navbar'>        
         <div className='search'>
             <form onSubmit={handleSubmit}>
                 <input 
