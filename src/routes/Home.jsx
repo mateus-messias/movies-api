@@ -26,7 +26,7 @@ const Home = () => {
       <div className='container'>
         {
           error ? 
-            <h2 className='error'>TITLE NO FOUND</h2>
+            <h2 className='error'>TITLE NOT FOUND</h2>
           : 
             <Movies moviesList={movies}/>
         }        
