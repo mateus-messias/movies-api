@@ -5,18 +5,24 @@ import './SingleMovie.css'
 
 const SingleMovie = () => {
   const {id} = useParams()
-  const [movie, setMovie] = useState([])
+  const [movie, setMovie] = useState({})
+  const [isLoading, setLoading] = useState(true)
 
   const getMovie = async (url) => {
     const response = await fetch(url)
     const data = await response.json()
     setMovie(data)   
-    console.log(url);
+    setLoading(false)
   }
 
   useEffect(() => {
     getMovie(`http://www.omdbapi.com/?apikey=33f3ff66&i=${id}`);
+    
   }, [])
+
+  if(isLoading){
+    return <h2 className='loading'>Loading...</h2>
+  }
 
   const {Poster, Title, Plot, Year, Runtime, imdbRating} = movie
 
@@ -29,8 +35,8 @@ const SingleMovie = () => {
             <h2>{Title}</h2>   
             <p>{Year}</p>
           </div>
-          <p>{Plot}</p>
-          <p>{Runtime}</p>       
+          <p className='plot'>{Plot}</p>
+          <p className='runtime'>{Runtime}</p>       
           <div className='rating'>
             <FaStar/>
             <p>{imdbRating}</p>

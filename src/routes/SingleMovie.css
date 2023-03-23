@@ -19,6 +19,9 @@
     margin: 1rem 0;
     text-align:justify
 }
+.runtime{
+    color: #868484;
+}
 .rating{
     display: flex;
     align-items: center;
@@ -47,6 +50,10 @@ button {
 button:hover {
     background-color: transparent;
     color: #F91A4E;
+}
+
+.loading {
+    text-align: center;
 }
 
 @media screen and (min-width: 800px){
